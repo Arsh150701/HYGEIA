@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,10 +37,12 @@ public class CreateAccountActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     EditText fieldName;
     EditText fieldEmail;
-    EditText fieldEmailconfirm;
+    EditText fieldEmailconfirm, license;
     Button verify, emailRegister;
     Button go;
-    TextInputLayout namebox, emailbox, confemailbox;
+    TextInputLayout namebox, emailbox, confemailbox, licensebox;
+    private RadioGroup radioGroup;
+    private RadioButton radio;
 
     FirebaseUser user;
     String Number;
@@ -61,12 +65,16 @@ public class CreateAccountActivity extends AppCompatActivity {
         namebox = findViewById(R.id.namebox);
         emailbox = findViewById(R.id.emailbox);
         confemailbox = findViewById(R.id.confirmemailbox);
+        radioGroup = findViewById(R.id.radiogrp);
+        licensebox=findViewById(R.id.licensebox);
+        license=findViewById(R.id.license);
+//        go.setText("Sign Up");
 
         setWatcher(namebox, fieldName);
         setWatcher(confemailbox, fieldEmailconfirm);
         setWatcher(emailbox, fieldEmail);
 
-        go.setText(getIntent().getStringExtra("Title"));
+//        go.setText(getIntent().getStringExtra("Title"));
 
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,28 +88,87 @@ public class CreateAccountActivity extends AppCompatActivity {
                 } else {
                     if (!(fieldEmail.getText().toString().isEmpty())) {
                         Log.d(TAG, "sendEmailVerify() ");
+                        Toast.makeText(CreateAccountActivity.this, "To verify, click on the link you got in your mail and then click on register", Toast.LENGTH_SHORT).show();
                         sendemailverify();
                     }
                 }
             }
         });
 
-        go.setOnClickListener(new View.OnClickListener() {
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                Log.d(TAG, "signIn");
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.radioyes:
+                        licensebox.setVisibility(View.VISIBLE);
+//                        go.setText("Sign Up");
+                        go.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Log.d(TAG, "signIn");
 
-                if (fieldName.getText().toString().isEmpty()) {
-                    namebox.setError("Provide some name");
-                    fieldName.requestFocus();
-                } else {
-                    Log.d(TAG, "signIn inside else ");
-                    saveDetails();
-                    Toast.makeText(CreateAccountActivity.this, "Account created sucessfully", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(CreateAccountActivity.this, MainActivity.class));
+                                if (fieldName.getText().toString().isEmpty()) {
+                                    namebox.setError("Provide some name");
+                                    fieldName.requestFocus();
+                                } else {
+                                    Log.d(TAG, "signIn inside else ");
+                                    saveDetails();
+                                    Toast.makeText(CreateAccountActivity.this, "Account created sucessfully for dr", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(CreateAccountActivity.this, DoctorMainActivity.class));
+                                }
+                            }
+                        });
+                        break;
+                    case R.id.radiono:
+                        licensebox.setVisibility(View.GONE);
+//                        go.setText("Sign Up");
+                        go.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Log.d(TAG, "signIn");
+
+                                if (fieldName.getText().toString().isEmpty()) {
+                                    namebox.setError("Provide some name");
+                                    fieldName.requestFocus();
+                                } else {
+                                    Log.d(TAG, "signIn inside else ");
+                                    saveDetails();
+                                    Toast.makeText(CreateAccountActivity.this, "Account created sucessfully", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(CreateAccountActivity.this, MainActivity.class));
+                                }
+                            }
+                        });
                 }
             }
         });
+
+//        go.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d(TAG, "signIn");
+//
+//                if (fieldName.getText().toString().isEmpty()) {
+//                    namebox.setError("Provide some name");
+//                    fieldName.requestFocus();
+//                } else {
+//                    Log.d(TAG, "signIn inside else ");
+//                    saveDetails();
+//                    Toast.makeText(CreateAccountActivity.this, "Account created sucessfully", Toast.LENGTH_SHORT).show();
+//                    if(radio.getText().equals("No")){
+//                        startActivity(new Intent(CreateAccountActivity.this, MainActivity.class));
+//                    }
+//                    else{
+//                        if(license.getText()==null){
+//                            licensebox.setError("This should not be empty");
+//                            return;
+//                        }
+//                        Toast.makeText(CreateAccountActivity.this, "License Verified", Toast.LENGTH_SHORT).show();
+//                        startActivity(new Intent(CreateAccountActivity.this, DoctorMainActivity.class));
+//
+//                    }
+//                }
+//            }
+//        });
 
         emailRegister.setOnClickListener(new View.OnClickListener() {
             @Override
