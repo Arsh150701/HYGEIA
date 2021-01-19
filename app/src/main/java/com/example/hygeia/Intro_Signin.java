@@ -17,9 +17,9 @@ public class Intro_Signin extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro__signin);
-        viewPager= findViewById(R.id.view_pager);
-        dot= findViewById(R.id.dot);
-        viewAdapter= new ViewAdapter(Intro_Signin.this);
+        viewPager = findViewById(R.id.view_pager);
+        dot = findViewById(R.id.dot);
+        viewAdapter = new ViewAdapter(Intro_Signin.this);
         viewPager.setAdapter(viewAdapter);
         dot.setViewPager(viewPager);
     }

@@ -15,12 +15,19 @@ import androidx.viewpager.widget.ViewPager;
 public class ViewAdapter extends PagerAdapter {
     private Context context;
     private MainActivity cont;
-    private Integer[] images={R.drawable.one, R.drawable.two, R.drawable.three, R.drawable.four, R.drawable.four };
-    private int[] tagtext={R.string.one, R.string.two,R.string.three, R.string.four };
-    ViewAdapter(Context context)
-    {
-        this.context=context;
+    private Integer[] images = {
+            R.drawable.one,
+            R.drawable.two,
+            R.drawable.three,
+            R.drawable.four,
+            R.drawable.four
+    };
+    private int[] tagtext = {R.string.one, R.string.two, R.string.three, R.string.four};
+
+    ViewAdapter(Context context) {
+        this.context = context;
     }
+
     @Override
     public int getCount() {
         return images.length;
@@ -28,7 +35,7 @@ public class ViewAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view== object;
+        return view == object;
     }
 
     @NonNull
@@ -63,8 +70,8 @@ public class ViewAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        ViewPager viewPager=(ViewPager) container;
-        View view= (View) object;
+        ViewPager viewPager = (ViewPager) container;
+        View view = (View) object;
         viewPager.removeView(view);
     }
 

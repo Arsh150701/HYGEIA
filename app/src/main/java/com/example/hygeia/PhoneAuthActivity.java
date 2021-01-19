@@ -5,9 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +19,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthResult;
@@ -49,7 +54,9 @@ public class PhoneAuthActivity extends AppCompatActivity {
 
     private EditText phoneNumber;
     private EditText smsCode;
-    private TextView tvLogin;
+    private TextInputLayout phonebox, otpbox;
+
+    private Animation resendanim;
 
 
     @Override
@@ -64,7 +71,7 @@ public class PhoneAuthActivity extends AppCompatActivity {
             smsCode = findViewById(R.id.fieldVerificationCode);
             startPhoneNumberVerification(phoneNumber.getText().toString());
         }
-        Log.d(TAG, "onStart" );
+        Log.d(TAG, "onStart");
 
         // [END_EXCLUDE]
     }
@@ -78,9 +85,14 @@ public class PhoneAuthActivity extends AppCompatActivity {
         phoneNumber = findViewById(R.id.fieldPhoneNumber);
         smsCode = findViewById(R.id.fieldVerificationCode);
         mAuth = FirebaseAuth.getInstance();
-        tvLogin= findViewById(R.id.tvLogin);
+        phonebox = findViewById(R.id.phonebox);
+        otpbox = findViewById(R.id.otpbox);
+        setWatcher(phonebox, phoneNumber);
+        setWatcher(otpbox, smsCode);
+
+        resendanim = AnimationUtils.loadAnimation(PhoneAuthActivity.this, R.anim.resend_rot);
         signOut();
-        Log.d(TAG, "onCreate" );
+        Log.d(TAG, "onCreate");
 
 
         findViewById(R.id.buttonStartVerification).setOnClickListener(new View.OnClickListener() {
@@ -88,6 +100,9 @@ public class PhoneAuthActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     Log.d(TAG, "buttonVerify");
+
+                    phonebox.setError(null);
+                    otpbox.setError(null);
 
                     phoneNumber = findViewById(R.id.fieldPhoneNumber);
                     smsCode = findViewById(R.id.fieldVerificationCode);
@@ -102,7 +117,8 @@ public class PhoneAuthActivity extends AppCompatActivity {
                     FirebaseAuthSettings firebaseAuthSettings = auth.getFirebaseAuthSettings();
                     firebaseAuthSettings.setAutoRetrievedSmsCodeForPhoneNumber(phoneNumber.getText().toString(), smsCode.getText().toString());
                 } catch (Exception e) {
-                    Toast.makeText(PhoneAuthActivity.this, "Enter Fields", Toast.LENGTH_SHORT).show();
+                    phonebox.setError("Enter the field");
+                    otpbox.setError("Enter the field");
                 }
             }
 
@@ -111,12 +127,13 @@ public class PhoneAuthActivity extends AppCompatActivity {
         findViewById(R.id.buttonVerifyPhone).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "Button Otp" );
+                Log.d(TAG, "Button Otp");
 
                 if (TextUtils.isEmpty(smsCode.getText().toString())) {
-                    smsCode.setError("Cannot be empty.");
+                    otpbox.setError("Cannot be empty.");
                     return;
                 }
+                otpbox.setError(null);
                 verifyPhoneNumberWithCode(mVerificationId, smsCode.getText().toString());
             }
         });
@@ -124,7 +141,8 @@ public class PhoneAuthActivity extends AppCompatActivity {
         findViewById(R.id.buttonResend).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "buttonResend" );
+                Log.d(TAG, "buttonResend");
+                findViewById(R.id.buttonResend).startAnimation(resendanim);
 
                 phoneNumber = findViewById(R.id.fieldPhoneNumber);
                 smsCode = findViewById(R.id.fieldVerificationCode);
@@ -134,10 +152,7 @@ public class PhoneAuthActivity extends AppCompatActivity {
         });
 
 
-
-
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-
 
 
             @Override
@@ -162,15 +177,17 @@ public class PhoneAuthActivity extends AppCompatActivity {
                 if (e instanceof FirebaseAuthInvalidCredentialsException) {
                     // Invalid request
                     // ...
-                    Toast.makeText(PhoneAuthActivity.this, "phone number is not linked to any account", Toast.LENGTH_SHORT).show();
+                    phonebox.setError("Please check the phone number");
                 } else if (e instanceof FirebaseTooManyRequestsException) {
                     // The SMS quota for the project has been exceeded
                     // ...
+                    phonebox.setError(null);
                     Toast.makeText(PhoneAuthActivity.this, "Server overload... could not verify", Toast.LENGTH_SHORT).show();
                 }
                 // Show a message and update the UI
                 // ...
             }
+
             @Override
             public void onCodeSent(@NonNull String verificationId,
                                    @NonNull PhoneAuthProvider.ForceResendingToken token) {
@@ -186,12 +203,32 @@ public class PhoneAuthActivity extends AppCompatActivity {
                 // ...
             }
         };
-
     }
+
+    public void setWatcher(TextInputLayout layout, EditText editText) {
+        TextWatcher watcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                layout.setError(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        };
+        editText.addTextChangedListener(watcher);
+    }
+
     private void startPhoneNumberVerification(String phoneNumber) {
 
         try {
-            Log.d(TAG, "startPhoneNumber" );
+            Log.d(TAG, "startPhoneNumber");
 
             FirebaseAuth auth = FirebaseAuth.getInstance();
 
@@ -216,14 +253,13 @@ public class PhoneAuthActivity extends AppCompatActivity {
             // [END start_phone_auth]
             mVerificationInProgress = true;
             auth.setLanguageCode("en");
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             Toast.makeText(PhoneAuthActivity.this, " here", Toast.LENGTH_SHORT).show();
         }
     }
+
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
-        Log.d(TAG, "signInwithPhone" );
+        Log.d(TAG, "signInwithPhone");
 
 
         mAuth.signInWithCredential(credential)
@@ -248,41 +284,38 @@ public class PhoneAuthActivity extends AppCompatActivity {
     }
 
 
-
     private void verifyPhoneNumberWithCode(String mVerificationId, String code) {
         // [START verify_with_code]
-        Log.d(TAG, "verifyPhoneNumberWithcode" );
+        Log.d(TAG, "verifyPhoneNumberWithcode");
 
         try {
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
             // [END verify_with_code]
             signInWithPhoneAuthCredential(credential);
-        }
-        catch (Exception e) {
-            Toast.makeText(PhoneAuthActivity.this, " Enter the fields", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(PhoneAuthActivity.this, " Enter the fields verify", Toast.LENGTH_SHORT).show();
 
         }
     }
-
 
 
     private boolean validatePhoneNumber() {
-        Log.d(TAG, "validatePhoneNumber" );
+        Log.d(TAG, "validatePhoneNumber");
 
         phoneNumber = findViewById(R.id.fieldPhoneNumber);
         if (TextUtils.isEmpty(phoneNumber.getText().toString())) {
-            phoneNumber.setError("Invalid phone number.");
+            phonebox.setError("Invalid phone number.");
             return false;
         }
-
+        phonebox.setError(null);
         return true;
     }
-
 
 
     private void resendVerificationCode(String phoneNumber,
                                         PhoneAuthProvider.ForceResendingToken token) {
         try {
+            phonebox.setError(null);
             PhoneAuthProvider.getInstance().verifyPhoneNumber(
                     phoneNumber,        // Phone number to verify
                     60,                 // Timeout duration
@@ -291,12 +324,10 @@ public class PhoneAuthActivity extends AppCompatActivity {
                     mCallbacks,         // OnVerificationStateChangedCallbacks
                     token);             // ForceResendingToken from callbacks
         } catch (IllegalArgumentException e) {
-            Toast.makeText(PhoneAuthActivity.this, " Enter the fields", Toast.LENGTH_SHORT).show();
+            phonebox.setError("Enter your phone number");
 
         }
     }
-
-
 
 
     private void signOut() {
@@ -310,25 +341,23 @@ public class PhoneAuthActivity extends AppCompatActivity {
         TextView phone = findViewById(R.id.fieldPhoneNumber);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("users")
-                .whereEqualTo("number",phone.getText().toString())
+                .whereEqualTo("number", phone.getText().toString())
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         Log.d(TAG, "onSucessListner");
-                        List<DocumentSnapshot> snapshotsList= queryDocumentSnapshots.getDocuments();
+                        List<DocumentSnapshot> snapshotsList = queryDocumentSnapshots.getDocuments();
                         Intent intent;
-                        if(!snapshotsList.isEmpty())
-                        {
+                        if (!snapshotsList.isEmpty()) {
                             //Log.d(TAG, "inside if" + " No record found");
                             Toast.makeText(PhoneAuthActivity.this, "Verified!.Loggin in", Toast.LENGTH_SHORT).show();
-                            intent= new Intent(PhoneAuthActivity.this, MainActivity.class);
+                            intent = new Intent(PhoneAuthActivity.this, MainActivity.class);
 
-                        }
-                        else {
+                        } else {
                             Log.d(TAG, "inside else");
                             Toast.makeText(PhoneAuthActivity.this, "Verified! Create your account", Toast.LENGTH_SHORT).show();
-                            intent= new Intent(PhoneAuthActivity.this, CreateAccountActivity.class);
+                            intent = new Intent(PhoneAuthActivity.this, CreateAccountActivity.class);
                         }
                         /*Pair[] pairs    = new Pair[1];
                         intent.putExtra("Number", phone.getText().toString());

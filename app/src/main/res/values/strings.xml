@@ -66,4 +66,10 @@
     <string name = "terrain_map">Terrain Map</string>
     <string name = "no_map">No Map</string>
     <string name = "show_hospitals_near_me">Show Hospitals Near Me</string>
+    <string name = "welcome_msg">Welcome to Hygiea</string>
+    <string name = "connect_via_phone">Connect via Phone</string>
+    <string name = "get_verification_code">Get Verification Code</string>
+    <string name = "enter_otp">Enter OTP</string>
+    <string name = "get_started">Get Started</string>
+    <string name = "hygeia_icon_text">Hygeia Icon</string>
 </resources>
