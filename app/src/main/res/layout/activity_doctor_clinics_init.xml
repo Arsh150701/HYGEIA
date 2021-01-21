@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android = "http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
+    xmlns:tools = "http://schemas.android.com/tools"
+    android:layout_width = "match_parent"
+    android:layout_height = "match_parent"
+    android:orientation = "vertical"
+    tools:context = ".DoctorClinicsInitActivity"
+    >
+    
+    <TextView
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_margin = "30dp"
+        android:text = "Enter Your clinic details"
+        android:textSize = "20sp"
+        />
+    
+    <com.google.android.material.textfield.TextInputLayout
+        android:id = "@+id/docclinicbox"
+        style = "@style/Theme.OutLinedBox"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginStart = "32dp"
+        android:layout_marginEnd = "32dp"
+        android:hint = "Name of Clinic"
+        app:errorEnabled = "true"
+        >
+        
+        <com.google.android.material.textfield.TextInputEditText
+            android:id = "@+id/docclinic"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:inputType = "text"
+            />
+    
+    </com.google.android.material.textfield.TextInputLayout>
+    
+    <TextView
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginStart = "32dp"
+        android:layout_marginTop = "10dp"
+        android:layout_marginEnd = "32dp"
+        android:text = "When do you visit this clinic?"
+        />
+    
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginStart = "32dp"
+        android:layout_marginEnd = "32dp"
+        android:orientation = "horizontal"
+        >
+        
+        <CheckBox
+            android:id = "@+id/checkmon"
+            android:layout_width = "wrap_content"
+            android:layout_height = "match_parent"
+            android:text = "Monday"
+            />
+    
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/sttimeboxmon"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "100dp"
+            android:layout_height = "wrap_content"
+            android:hint = "@string/start_time"
+            android:visibility = "gone"
+            >
+        
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/sttimemon"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
+    
+        </com.google.android.material.textfield.TextInputLayout>
+    
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/ettimeboxmon"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "100dp"
+            android:layout_height = "wrap_content"
+            android:hint = "@string/end_time"
+            android:visibility = "gone"
+            >
+        
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/ettimemon"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
+    
+        </com.google.android.material.textfield.TextInputLayout>
+    
+    
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginStart = "32dp"
+        android:layout_marginEnd = "32dp"
+        android:orientation = "horizontal"
+        >
+        
+        <CheckBox
+            android:id = "@+id/checktue"
+            android:layout_width = "wrap_content"
+            android:layout_height = "match_parent"
+            android:text = "Tuesday"
+            />
+    
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/sttimeboxtue"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "100dp"
+            android:layout_height = "wrap_content"
+            android:hint = "@string/start_time"
+            android:visibility = "gone"
+            >
+        
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/sttimetue"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
+    
+        </com.google.android.material.textfield.TextInputLayout>
+    
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/ettimeboxtue"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "100dp"
+            android:layout_height = "wrap_content"
+            android:hint = "@string/end_time"
+            android:visibility = "gone"
+            >
+        
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/ettimetue"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
+    
+        </com.google.android.material.textfield.TextInputLayout>
+    
+    
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginStart = "32dp"
+        android:layout_marginEnd = "32dp"
+        android:orientation = "horizontal"
+        >
+        
+        <CheckBox
+            android:id = "@+id/checkwed"
+            android:layout_width = "wrap_content"
+            android:layout_height = "match_parent"
+            android:text = "Wednesday"
+            />
+    
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/sttimeboxwed"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "100dp"
+            android:layout_height = "wrap_content"
+            android:hint = "@string/start_time"
+            android:visibility = "gone"
+            >
+        
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/sttimewed"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
+    
+        </com.google.android.material.textfield.TextInputLayout>
+    
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/ettimeboxwed"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "100dp"
+            android:layout_height = "wrap_content"
+            android:hint = "@string/end_time"
+            android:visibility = "gone"
+            >
+        
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/ettimewed"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
+    
+        </com.google.android.material.textfield.TextInputLayout>
+    
+    
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginStart = "32dp"
+        android:layout_marginEnd = "32dp"
+        android:orientation = "horizontal"
+        >
+        
+        <CheckBox
+            android:id = "@+id/checkthur"
+            android:layout_width = "wrap_content"
+            android:layout_height = "match_parent"
+            android:text = "Thursday"
+            />
+    
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/sttimeboxthur"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "100dp"
+            android:layout_height = "wrap_content"
+            android:hint = "@string/start_time"
+            android:visibility = "gone"
+            >
+        
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/sttimethur"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
+    
+        </com.google.android.material.textfield.TextInputLayout>
+    
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/ettimeboxthur"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "100dp"
+            android:layout_height = "wrap_content"
+            android:hint = "@string/end_time"
+            android:visibility = "gone"
+            >
+        
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/ettimethur"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
+    
+        </com.google.android.material.textfield.TextInputLayout>
+    
+    
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginStart = "32dp"
+        android:layout_marginEnd = "32dp"
+        android:orientation = "horizontal"
+        >
+        
+        <CheckBox
+            android:id = "@+id/checkfri"
+            android:layout_width = "wrap_content"
+            android:layout_height = "match_parent"
+            android:text = "Friday"
+            />
+    
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/sttimeboxfri"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "100dp"
+            android:layout_height = "wrap_content"
+            android:hint = "@string/start_time"
+            android:visibility = "gone"
+            >
+        
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/sttimefri"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
+    
+        </com.google.android.material.textfield.TextInputLayout>
+    
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/ettimeboxfri"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "100dp"
+            android:layout_height = "wrap_content"
+            android:hint = "@string/end_time"
+            android:visibility = "gone"
+            >
+        
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/ettimefri"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
+    
+        </com.google.android.material.textfield.TextInputLayout>
+    
+    
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginStart = "32dp"
+        android:layout_marginEnd = "32dp"
+        android:orientation = "horizontal"
+        >
+        
+        <CheckBox
+            android:id = "@+id/checksat"
+            android:layout_width = "wrap_content"
+            android:layout_height = "match_parent"
+            android:text = "Saturday"
+            />
+    
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/sttimeboxsat"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "100dp"
+            android:layout_height = "wrap_content"
+            android:hint = "@string/start_time"
+            android:visibility = "gone"
+            >
+        
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/sttimesat"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
+    
+        </com.google.android.material.textfield.TextInputLayout>
+    
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/ettimeboxsat"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "100dp"
+            android:layout_height = "wrap_content"
+            android:hint = "@string/end_time"
+            android:visibility = "gone"
+            >
+        
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/ettimesat"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
+    
+        </com.google.android.material.textfield.TextInputLayout>
+    
+    
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginStart = "32dp"
+        android:layout_marginEnd = "32dp"
+        android:orientation = "horizontal"
+        >
+        
+        <CheckBox
+            android:id = "@+id/checksun"
+            android:layout_width = "wrap_content"
+            android:layout_height = "match_parent"
+            android:text = "Sunday"
+            />
+    
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/sttimeboxsun"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "100dp"
+            android:layout_height = "wrap_content"
+            android:hint = "@string/start_time"
+            android:visibility = "gone"
+            >
+        
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/sttimesun"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
+    
+        </com.google.android.material.textfield.TextInputLayout>
+    
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/ettimeboxsun"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "100dp"
+            android:layout_height = "wrap_content"
+            android:hint = "@string/end_time"
+            android:visibility = "gone"
+            >
+        
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/ettimesun"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
+    
+        </com.google.android.material.textfield.TextInputLayout>
+        
+    </LinearLayout>
+    
+    <!--Have to take location-->
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text="Update clinic"
+        android:layout_gravity="center"
+        android:id="@+id/addclinic"/>
+
+</LinearLayout>

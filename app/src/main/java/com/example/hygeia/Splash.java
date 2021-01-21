@@ -17,7 +17,7 @@ public class Splash extends AppCompatActivity {
         if (user == null)
             startActivity(new Intent(this, Intro_Signin.class));
         else
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, MainActivity.class));//yaha change karna hai
         onBackPressed();
     }
 

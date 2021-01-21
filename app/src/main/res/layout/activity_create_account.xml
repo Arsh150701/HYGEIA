@@ -91,9 +91,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
+        android:layout_marginStart = "32dp"
         android:layout_marginTop = "8dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd = "32dp"
         >
         
         <com.google.android.material.button.MaterialButton
@@ -121,49 +121,96 @@
     <TextView
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
-        android:text="Are you a doctor?"
-        android:layout_marginStart="32dp"
-        android:padding="10dp"
-        android:textSize="16sp"/>
+        android:layout_marginStart = "32dp"
+        android:padding = "10dp"
+        android:text = "Are you a doctor?"
+        android:textSize = "16sp"
+        />
     
     <RadioGroup
+        android:id = "@+id/radiogrp"
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
-        android:id="@+id/radiogrp"
-        android:checkedButton="@id/radiono"
-        android:layout_marginStart="32dp"
-        android:orientation="horizontal">
+        android:layout_marginStart = "32dp"
+        android:orientation = "horizontal"
+        >
         
         <RadioButton
+            android:id = "@+id/radioyes"
             android:layout_width = "wrap_content"
             android:layout_height = "wrap_content"
-            android:text="Yes"
-            android:id="@+id/radioyes"/>
-        <RadioButton
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:id="@+id/radiono"
-            android:text="No"/>
+            android:text = "Yes"
+            />
         
+        <RadioButton
+            android:id = "@+id/radiono"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text = "No"
+            />
+    
     </RadioGroup>
     
     <com.google.android.material.textfield.TextInputLayout
+        android:id = "@+id/licensebox"
+        style = "@style/Theme.OutLinedBox"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        style="@style/Theme.OutLinedBox"
-        android:id="@+id/licensebox"
-        app:errorEnabled="true"
-        android:visibility="gone"
-        android:hint="License"
+        android:layout_marginStart = "32dp"
+        android:layout_marginEnd = "32dp"
+        android:hint = "License"
+        android:visibility = "gone"
+        app:errorEnabled = "true"
         >
         
         <com.google.android.material.textfield.TextInputEditText
+            android:id = "@+id/license"
             android:layout_width = "match_parent"
             android:layout_height = "wrap_content"
-            android:id="@+id/license"/>
+            />
+    
+    </com.google.android.material.textfield.TextInputLayout>
+    
+    <com.google.android.material.textfield.TextInputLayout
+        android:id = "@+id/doctypebox"
+        style = "@style/Theme.OutLinedBox"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginStart = "32dp"
+        android:layout_marginEnd = "32dp"
+        android:hint = "Enter your speciality"
+        android:visibility = "gone"
+        app:errorEnabled = "true"
+        >
         
+        <com.google.android.material.textfield.TextInputEditText
+            android:id = "@+id/doctypetext"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:inputType = "text"
+            />
+    
+    </com.google.android.material.textfield.TextInputLayout>
+    
+    <com.google.android.material.textfield.TextInputLayout
+        android:id = "@+id/docexpbox"
+        style = "@style/Theme.OutLinedBox"
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginStart = "32dp"
+        android:layout_marginEnd = "32dp"
+        android:hint = "Experience (in years)"
+        android:visibility = "gone"
+        app:errorEnabled = "true"
+        >
+        
+        <com.google.android.material.textfield.TextInputEditText
+            android:id = "@+id/docexptext"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:inputType = "number"
+            />
+    
     </com.google.android.material.textfield.TextInputLayout>
     
     

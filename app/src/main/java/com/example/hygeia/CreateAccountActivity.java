@@ -37,17 +37,15 @@ public class CreateAccountActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     EditText fieldName;
     EditText fieldEmail;
-    EditText fieldEmailconfirm, license;
+    EditText fieldEmailconfirm, license, doctypetext, docexptext;
     Button verify, emailRegister;
     Button go;
-    TextInputLayout namebox, emailbox, confemailbox, licensebox;
+    TextInputLayout namebox, emailbox, confemailbox, licensebox, doctypebox, docexpbox;
     private RadioGroup radioGroup;
-    private RadioButton radio;
+    private int checked;
 
     FirebaseUser user;
     String Number;
-    AlertDialog alertDialog;
-    AlertDialog.Builder dialogBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +64,20 @@ public class CreateAccountActivity extends AppCompatActivity {
         emailbox = findViewById(R.id.emailbox);
         confemailbox = findViewById(R.id.confirmemailbox);
         radioGroup = findViewById(R.id.radiogrp);
-        licensebox=findViewById(R.id.licensebox);
-        license=findViewById(R.id.license);
+        licensebox = findViewById(R.id.licensebox);
+        license = findViewById(R.id.license);
+        doctypebox=findViewById(R.id.doctypebox);
+        doctypetext=findViewById(R.id.doctypetext);
+        docexpbox=findViewById(R.id.docexpbox);
+        docexptext=findViewById(R.id.docexptext);
+        checked=0;
 //        go.setText("Sign Up");
 
         setWatcher(namebox, fieldName);
         setWatcher(confemailbox, fieldEmailconfirm);
         setWatcher(emailbox, fieldEmail);
+        setWatcher(docexpbox, docexptext);
+        setWatcher(doctypebox, docexptext);
 
 //        go.setText(getIntent().getStringExtra("Title"));
 
@@ -98,83 +103,76 @@ public class CreateAccountActivity extends AppCompatActivity {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                switch (i){
+                switch (i) {
                     case R.id.radioyes:
                         licensebox.setVisibility(View.VISIBLE);
-//                        go.setText("Sign Up");
-                        go.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Log.d(TAG, "signIn");
-
-                                if (fieldName.getText().toString().isEmpty()) {
-                                    namebox.setError("Provide some name");
-                                    fieldName.requestFocus();
-                                } else {
-                                    Log.d(TAG, "signIn inside else ");
-                                    saveDetails();
-                                    Toast.makeText(CreateAccountActivity.this, "Account created sucessfully for dr", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(CreateAccountActivity.this, DoctorMainActivity.class));
-                                }
-                            }
-                        });
+                        docexpbox.setVisibility(View.VISIBLE);
+                        doctypebox.setVisibility(View.VISIBLE);
+                        checked = 1;
+                        Toast.makeText(getApplicationContext(), "yes checked", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.radiono:
                         licensebox.setVisibility(View.GONE);
-//                        go.setText("Sign Up");
-                        go.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Log.d(TAG, "signIn");
-
-                                if (fieldName.getText().toString().isEmpty()) {
-                                    namebox.setError("Provide some name");
-                                    fieldName.requestFocus();
-                                } else {
-                                    Log.d(TAG, "signIn inside else ");
-                                    saveDetails();
-                                    Toast.makeText(CreateAccountActivity.this, "Account created sucessfully", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(CreateAccountActivity.this, MainActivity.class));
-                                }
-                            }
-                        });
+                        docexpbox.setVisibility(View.GONE);
+                        doctypebox.setVisibility(View.GONE);
+                        checked = 2;
+                        Toast.makeText(getApplicationContext(), "no checked", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-//        go.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d(TAG, "signIn");
-//
-//                if (fieldName.getText().toString().isEmpty()) {
-//                    namebox.setError("Provide some name");
-//                    fieldName.requestFocus();
-//                } else {
-//                    Log.d(TAG, "signIn inside else ");
-//                    saveDetails();
-//                    Toast.makeText(CreateAccountActivity.this, "Account created sucessfully", Toast.LENGTH_SHORT).show();
-//                    if(radio.getText().equals("No")){
-//                        startActivity(new Intent(CreateAccountActivity.this, MainActivity.class));
-//                    }
-//                    else{
-//                        if(license.getText()==null){
-//                            licensebox.setError("This should not be empty");
-//                            return;
-//                        }
-//                        Toast.makeText(CreateAccountActivity.this, "License Verified", Toast.LENGTH_SHORT).show();
-//                        startActivity(new Intent(CreateAccountActivity.this, DoctorMainActivity.class));
-//
-//                    }
-//                }
-//            }
-//        });
+        go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onClick: inside signup");
+                switch (checked) {
+                    case 0:
+                        Log.d(TAG, "onClick: must check");
+                        Toast.makeText(CreateAccountActivity.this, "You must check a box", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        //user is a doctor
+                        Log.d(TAG, "signIndr");
+                        if (fieldName.getText().toString().isEmpty()) {
+                            namebox.setError("Provide some name");
+                            fieldName.requestFocus();
+                        }
+                        if(license.getText().toString().isEmpty()){
+                            licensebox.setError("This field is necessary");
+                        }
+                        if(docexptext.getText().toString().isEmpty()){
+                            docexpbox.setError("This field is necessary");
+                        }
+                        if(doctypetext.getText().toString().isEmpty()){
+                            doctypebox.setError("This field is necessary");
+                        }
+                        else {
+                            Log.d(TAG, "signIn inside else ");
+                            saveDetails();
+                            Toast.makeText(CreateAccountActivity.this, "Account created sucessfully for dr", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(CreateAccountActivity.this, DoctorClinicsInitActivity.class));
+                        }
+                        break;
+                    case 2:
+                        Log.d(TAG, "signIn");
+                        if (fieldName.getText().toString().isEmpty()) {
+                            namebox.setError("Provide some name");
+                            fieldName.requestFocus();
+                        } else {
+                            Log.d(TAG, "signIn inside else ");
+                            saveDetails();
+                            Toast.makeText(CreateAccountActivity.this, "Account created sucessfully", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(CreateAccountActivity.this, MainActivity.class));
+                        }
+                        break;
+                }
+            }
+        });
 
         emailRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "emailRegister ");
-
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(fieldEmail.getText().toString(), "12345_admin")
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -224,9 +222,19 @@ public class CreateAccountActivity extends AppCompatActivity {
         map.put("Name", fieldName.getText().toString());
         map.put("number", Number);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("users")
-                .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .set(map, SetOptions.merge());
+        if(checked==2){
+            db.collection("users")
+                    .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .set(map, SetOptions.merge());
+        }
+        else if(checked==1){
+            map.put("Category", doctypetext.getText().toString());
+            map.put("Experience", docexptext.getText().toString());
+            db.collection("doctors")
+                    .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .set(map, SetOptions.merge());
+
+        }
 
     }
 
