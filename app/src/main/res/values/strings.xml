@@ -72,4 +72,6 @@
     <string name = "enter_otp">Enter OTP</string>
     <string name = "get_started">Get Started</string>
     <string name = "hygeia_icon_text">Hygeia Icon</string>
+    <string name = "start_time">Start time</string>
+    <string name = "end_time">End time</string>
 </resources>
