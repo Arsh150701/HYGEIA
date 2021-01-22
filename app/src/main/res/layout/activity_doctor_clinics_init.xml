@@ -60,43 +60,25 @@
             android:layout_height = "match_parent"
             android:text = "Monday"
             />
-    
-        <com.google.android.material.textfield.TextInputLayout
-            android:id = "@+id/sttimeboxmon"
-            style = "@style/Theme.OutLinedBox"
+        
+        <com.google.android.material.button.MaterialButton
+            android:id = "@+id/sttimemon"
+            android:layout_width = "110dp"
+            android:layout_height = "wrap_content"
+            android:text = "@string/start_time"
+            android:textAllCaps = "false"
+            android:visibility = "gone"
+            />
+        
+        <com.google.android.material.button.MaterialButton
+            android:id = "@+id/ettimemon"
             android:layout_width = "100dp"
             android:layout_height = "wrap_content"
-            android:hint = "@string/start_time"
+            android:layout_marginStart = "10dp"
+            android:text = "@string/end_time"
+            android:textAllCaps = "false"
             android:visibility = "gone"
-            >
-        
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/sttimemon"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:inputType = "text"
-                />
-    
-        </com.google.android.material.textfield.TextInputLayout>
-    
-        <com.google.android.material.textfield.TextInputLayout
-            android:id = "@+id/ettimeboxmon"
-            style = "@style/Theme.OutLinedBox"
-            android:layout_width = "100dp"
-            android:layout_height = "wrap_content"
-            android:hint = "@string/end_time"
-            android:visibility = "gone"
-            >
-        
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/ettimemon"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:inputType = "text"
-                />
-    
-        </com.google.android.material.textfield.TextInputLayout>
-    
+            />
     
     </LinearLayout>
     
@@ -114,43 +96,25 @@
             android:layout_height = "match_parent"
             android:text = "Tuesday"
             />
-    
-        <com.google.android.material.textfield.TextInputLayout
-            android:id = "@+id/sttimeboxtue"
-            style = "@style/Theme.OutLinedBox"
+        
+        <com.google.android.material.button.MaterialButton
+            android:id = "@+id/sttimetue"
+            android:layout_width = "110dp"
+            android:layout_height = "wrap_content"
+            android:text = "@string/start_time"
+            android:textAllCaps = "false"
+            android:visibility = "gone"
+            />
+        
+        <com.google.android.material.button.MaterialButton
+            android:id = "@+id/ettimetue"
             android:layout_width = "100dp"
             android:layout_height = "wrap_content"
-            android:hint = "@string/start_time"
+            android:layout_marginStart = "10dp"
+            android:text = "@string/end_time"
+            android:textAllCaps = "false"
             android:visibility = "gone"
-            >
-        
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/sttimetue"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:inputType = "text"
-                />
-    
-        </com.google.android.material.textfield.TextInputLayout>
-    
-        <com.google.android.material.textfield.TextInputLayout
-            android:id = "@+id/ettimeboxtue"
-            style = "@style/Theme.OutLinedBox"
-            android:layout_width = "100dp"
-            android:layout_height = "wrap_content"
-            android:hint = "@string/end_time"
-            android:visibility = "gone"
-            >
-        
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/ettimetue"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:inputType = "text"
-                />
-    
-        </com.google.android.material.textfield.TextInputLayout>
-    
+            />
     
     </LinearLayout>
     
@@ -168,43 +132,25 @@
             android:layout_height = "match_parent"
             android:text = "Wednesday"
             />
-    
-        <com.google.android.material.textfield.TextInputLayout
-            android:id = "@+id/sttimeboxwed"
-            style = "@style/Theme.OutLinedBox"
+        
+        <com.google.android.material.button.MaterialButton
+            android:id = "@+id/sttimewed"
+            android:layout_width = "110dp"
+            android:layout_height = "wrap_content"
+            android:text = "@string/start_time"
+            android:textAllCaps = "false"
+            android:visibility = "gone"
+            />
+        
+        <com.google.android.material.button.MaterialButton
+            android:id = "@+id/ettimewed"
             android:layout_width = "100dp"
             android:layout_height = "wrap_content"
-            android:hint = "@string/start_time"
+            android:layout_marginStart = "10dp"
+            android:text = "@string/end_time"
+            android:textAllCaps = "false"
             android:visibility = "gone"
-            >
-        
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/sttimewed"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:inputType = "text"
-                />
-    
-        </com.google.android.material.textfield.TextInputLayout>
-    
-        <com.google.android.material.textfield.TextInputLayout
-            android:id = "@+id/ettimeboxwed"
-            style = "@style/Theme.OutLinedBox"
-            android:layout_width = "100dp"
-            android:layout_height = "wrap_content"
-            android:hint = "@string/end_time"
-            android:visibility = "gone"
-            >
-        
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/ettimewed"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:inputType = "text"
-                />
-    
-        </com.google.android.material.textfield.TextInputLayout>
-    
+            />
     
     </LinearLayout>
     
@@ -222,43 +168,25 @@
             android:layout_height = "match_parent"
             android:text = "Thursday"
             />
-    
-        <com.google.android.material.textfield.TextInputLayout
-            android:id = "@+id/sttimeboxthur"
-            style = "@style/Theme.OutLinedBox"
+        
+        <com.google.android.material.button.MaterialButton
+            android:id = "@+id/sttimethur"
+            android:layout_width = "110dp"
+            android:layout_height = "wrap_content"
+            android:text = "@string/start_time"
+            android:textAllCaps = "false"
+            android:visibility = "gone"
+            />
+        
+        <com.google.android.material.button.MaterialButton
+            android:id = "@+id/ettimethur"
             android:layout_width = "100dp"
             android:layout_height = "wrap_content"
-            android:hint = "@string/start_time"
+            android:layout_marginStart = "10dp"
+            android:text = "@string/end_time"
+            android:textAllCaps = "false"
             android:visibility = "gone"
-            >
-        
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/sttimethur"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:inputType = "text"
-                />
-    
-        </com.google.android.material.textfield.TextInputLayout>
-    
-        <com.google.android.material.textfield.TextInputLayout
-            android:id = "@+id/ettimeboxthur"
-            style = "@style/Theme.OutLinedBox"
-            android:layout_width = "100dp"
-            android:layout_height = "wrap_content"
-            android:hint = "@string/end_time"
-            android:visibility = "gone"
-            >
-        
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/ettimethur"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:inputType = "text"
-                />
-    
-        </com.google.android.material.textfield.TextInputLayout>
-    
+            />
     
     </LinearLayout>
     
@@ -276,43 +204,25 @@
             android:layout_height = "match_parent"
             android:text = "Friday"
             />
-    
-        <com.google.android.material.textfield.TextInputLayout
-            android:id = "@+id/sttimeboxfri"
-            style = "@style/Theme.OutLinedBox"
+        
+        <com.google.android.material.button.MaterialButton
+            android:id = "@+id/sttimefri"
+            android:layout_width = "110dp"
+            android:layout_height = "wrap_content"
+            android:text = "@string/start_time"
+            android:textAllCaps = "false"
+            android:visibility = "gone"
+            />
+        
+        <com.google.android.material.button.MaterialButton
+            android:id = "@+id/ettimefri"
             android:layout_width = "100dp"
             android:layout_height = "wrap_content"
-            android:hint = "@string/start_time"
+            android:layout_marginStart = "10dp"
+            android:text = "@string/end_time"
+            android:textAllCaps = "false"
             android:visibility = "gone"
-            >
-        
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/sttimefri"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:inputType = "text"
-                />
-    
-        </com.google.android.material.textfield.TextInputLayout>
-    
-        <com.google.android.material.textfield.TextInputLayout
-            android:id = "@+id/ettimeboxfri"
-            style = "@style/Theme.OutLinedBox"
-            android:layout_width = "100dp"
-            android:layout_height = "wrap_content"
-            android:hint = "@string/end_time"
-            android:visibility = "gone"
-            >
-        
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/ettimefri"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:inputType = "text"
-                />
-    
-        </com.google.android.material.textfield.TextInputLayout>
-    
+            />
     
     </LinearLayout>
     
@@ -330,43 +240,25 @@
             android:layout_height = "match_parent"
             android:text = "Saturday"
             />
-    
-        <com.google.android.material.textfield.TextInputLayout
-            android:id = "@+id/sttimeboxsat"
-            style = "@style/Theme.OutLinedBox"
+        
+        <com.google.android.material.button.MaterialButton
+            android:id = "@+id/sttimesat"
+            android:layout_width = "110dp"
+            android:layout_height = "wrap_content"
+            android:text = "@string/start_time"
+            android:textAllCaps = "false"
+            android:visibility = "gone"
+            />
+        
+        <com.google.android.material.button.MaterialButton
+            android:id = "@+id/ettimesat"
             android:layout_width = "100dp"
             android:layout_height = "wrap_content"
-            android:hint = "@string/start_time"
+            android:layout_marginStart = "10dp"
+            android:text = "@string/end_time"
+            android:textAllCaps = "false"
             android:visibility = "gone"
-            >
-        
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/sttimesat"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:inputType = "text"
-                />
-    
-        </com.google.android.material.textfield.TextInputLayout>
-    
-        <com.google.android.material.textfield.TextInputLayout
-            android:id = "@+id/ettimeboxsat"
-            style = "@style/Theme.OutLinedBox"
-            android:layout_width = "100dp"
-            android:layout_height = "wrap_content"
-            android:hint = "@string/end_time"
-            android:visibility = "gone"
-            >
-        
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/ettimesat"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:inputType = "text"
-                />
-    
-        </com.google.android.material.textfield.TextInputLayout>
-    
+            />
     
     </LinearLayout>
     
@@ -384,52 +276,36 @@
             android:layout_height = "match_parent"
             android:text = "Sunday"
             />
-    
-        <com.google.android.material.textfield.TextInputLayout
-            android:id = "@+id/sttimeboxsun"
-            style = "@style/Theme.OutLinedBox"
+        
+        <com.google.android.material.button.MaterialButton
+            android:id = "@+id/sttimesun"
+            android:layout_width = "110dp"
+            android:layout_height = "wrap_content"
+            android:text = "@string/start_time"
+            android:textAllCaps = "false"
+            android:visibility = "gone"
+            />
+        
+        <com.google.android.material.button.MaterialButton
+            android:id = "@+id/ettimesun"
             android:layout_width = "100dp"
             android:layout_height = "wrap_content"
-            android:hint = "@string/start_time"
+            android:layout_marginStart = "10dp"
+            android:text = "@string/end_time"
+            android:textAllCaps = "false"
             android:visibility = "gone"
-            >
-        
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/sttimesun"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:inputType = "text"
-                />
+            />
     
-        </com.google.android.material.textfield.TextInputLayout>
-    
-        <com.google.android.material.textfield.TextInputLayout
-            android:id = "@+id/ettimeboxsun"
-            style = "@style/Theme.OutLinedBox"
-            android:layout_width = "100dp"
-            android:layout_height = "wrap_content"
-            android:hint = "@string/end_time"
-            android:visibility = "gone"
-            >
-        
-            <com.google.android.material.textfield.TextInputEditText
-                android:id = "@+id/ettimesun"
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:inputType = "text"
-                />
-    
-        </com.google.android.material.textfield.TextInputLayout>
-        
     </LinearLayout>
     
     <!--Have to take location-->
-
+    
     <com.google.android.material.button.MaterialButton
+        android:id = "@+id/addclinic"
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
-        android:text="Update clinic"
-        android:layout_gravity="center"
-        android:id="@+id/addclinic"/>
+        android:layout_gravity = "center"
+        android:text = "Update clinic"
+        />
 
 </LinearLayout>
