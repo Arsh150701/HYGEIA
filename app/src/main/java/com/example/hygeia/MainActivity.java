@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         getProfile();
 
         //For handling dynamic links
-        FirebaseDynamicLinks.getInstance().getDynamicLink(getIntent()).addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
+        /*FirebaseDynamicLinks.getInstance().getDynamicLink(getIntent()).addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
             @Override
             public void onSuccess(PendingDynamicLinkData pendingDynamicLinkData) {
                 Toast.makeText(MainActivity.this, "Found a dynamic link", Toast.LENGTH_SHORT).show();
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(MainActivity.this, "No data extractable", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 
     private void getProfile() {

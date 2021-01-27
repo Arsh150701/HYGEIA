@@ -351,25 +351,43 @@ public class PhoneAuthActivity extends AppCompatActivity {
                         Intent intent;
                         if (!snapshotsList.isEmpty()) {
                             //Log.d(TAG, "inside if" + " No record found");
+                            Log.d(TAG, "onSuccess: patient hai");
                             Toast.makeText(PhoneAuthActivity.this, "Verified!.Loggin in", Toast.LENGTH_SHORT).show();
                             intent = new Intent(PhoneAuthActivity.this, MainActivity.class);
-
+                            intent.putExtra("Number", phone.getText().toString());
+                            intent.putExtra("Title", "Sign Up");
+                            startActivity(intent);
                         } else {
-                            Log.d(TAG, "inside else");
-                            Toast.makeText(PhoneAuthActivity.this, "Verified! Create your account", Toast.LENGTH_SHORT).show();
-                            intent = new Intent(PhoneAuthActivity.this, CreateAccountActivity.class);
+                            db.collection("doctors")
+                                    .whereEqualTo("number", phone.getText().toString())
+                                    .get()
+                                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                        @Override
+                                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                            Log.d(TAG, "onSuccess: doctor");
+                                            List<DocumentSnapshot> snapshotsList = queryDocumentSnapshots.getDocuments();
+                                            Intent intent;
+                                            if (!snapshotsList.isEmpty()) {
+                                                //Log.d(TAG, "inside if" + " No record found");
+                                                Log.d(TAG, "onSuccess: doctor hai");
+                                                Toast.makeText(PhoneAuthActivity.this, "Verified!.Loggin in doctor", Toast.LENGTH_SHORT).show();
+                                                intent = new Intent(PhoneAuthActivity.this, DoctorMainActivity.class);
+                                                intent.putExtra("Number", phone.getText().toString());
+                                                intent.putExtra("Title", "Sign Up");
+                                                startActivity(intent);
+                                            } else {
+                                                Log.d(TAG, "checkRegister: not found");
+                                                Toast.makeText(PhoneAuthActivity.this, "Verified! Create your account", Toast.LENGTH_SHORT).show();
+                                                intent = new Intent(PhoneAuthActivity.this, CreateAccountActivity.class);
+                                                intent.putExtra("Number", phone.getText().toString());
+                                                intent.putExtra("Title", "Sign Up");
+                                                startActivity(intent);
+                                            }
+                                        }
+                                    });
                         }
-                        /*Pair[] pairs    = new Pair[1];
-                        intent.putExtra("Number", phone.getText().toString());
-                        pairs[0] = new Pair<View,String>(tvLogin,"tvLogin");
-                        ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(PhoneAuthActivity.this,pairs);
-                        startActivity(intent, activityOptions.toBundle());*/
-                        intent.putExtra("Number", phone.getText().toString());
-                        intent.putExtra("Title", "Sign Up");
-                        startActivity(intent);
                     }
                 });
-
     }
 
 }

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -37,7 +38,7 @@ public class DoctorClinicsInitActivity extends AppCompatActivity {
     private static final String TAG = "DoctorClinicsInitActivi";
 
     private CheckBox mon, tue, wed, thur, fri, sat, sun;
-    private Button addclinic;
+    private Button addclinic, skip;
     private Button btnstmon, btnsttue, btnstwed, btnstthur, btnstfri, btnstsat, btnstsun;
     private Button btnetmon, btnettue, btnetwed, btnetthur, btnetfri, btnetsat, btnetsun;
     private TextInputLayout doclinicbox;
@@ -51,6 +52,7 @@ public class DoctorClinicsInitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_clinics_init);
 
+        skip = findViewById(R.id.skipclinic);
         doclinicbox = findViewById(R.id.docclinicbox);
         doclinic = findViewById(R.id.docclinic);
         addclinic = findViewById(R.id.addclinic);
@@ -127,6 +129,13 @@ public class DoctorClinicsInitActivity extends AppCompatActivity {
                 if (sun.isChecked())
                     saveDetails(btnstsun, btnetsun, sun);
                 Log.d(TAG, "onClick: buttonclick");
+            }
+        });
+
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), DoctorMainActivity.class));
             }
         });
     }

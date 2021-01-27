@@ -25,23 +25,7 @@ public class Splash extends AppCompatActivity {
         if (user == null)
             startActivity(new Intent(this, Intro_Signin.class));
         else {
-            /*FirebaseFirestore db = FirebaseFirestore.getInstance();
-            Log.d(TAG, "onCreate: " + FirebaseAuth.getInstance().getCurrentUser().getUid());
-            Log.d(TAG, "onCreate: " + user);
-
-            db.collection("users")
-                    .document(user.getUid())
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if (task.isSuccessful())
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                            else
-                                startActivity(new Intent(getApplicationContext(), DoctorClinicsInitActivity.class));
-                        }
-                    });*/
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), IntermediateActivity.class));
         }
         onBackPressed();
     }

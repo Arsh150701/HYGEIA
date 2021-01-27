@@ -18,6 +18,8 @@
         android:roundIcon = "@mipmap/hygeia_icon_round"
         android:supportsRtl = "true"
         android:theme = "@style/Theme.Hygeia">
+        <activity android:name = ".IntermediateActivity">
+        </activity>
         <activity android:name = ".DoctorClinicsInitActivity">
         </activity>
         <activity android:name = ".DoctorMainActivity">

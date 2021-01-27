@@ -1,228 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-    xmlns:app = "http://schemas.android.com/apk/res-auto"
-    xmlns:tools = "http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android = "http://schemas.android.com/apk/res/android"
     android:layout_width = "match_parent"
     android:layout_height = "match_parent"
     android:background = "@color/alertdiag"
-    android:orientation = "vertical"
     >
     
-    <TextView
-        android:id = "@+id/tvSignUp"
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:layout_gravity = "center"
-        android:layout_marginTop = "40dp"
-        android:layout_marginBottom = "32dp"
-        android:text = "Sign up"
-        android:textSize = "20sp"
-        android:textStyle = "bold"
-        />
-    
-    <com.google.android.material.textfield.TextInputLayout
-        android:id = "@+id/namebox"
-        style = "@style/Theme.OutLinedBox"
+    <LinearLayout
+        xmlns:app = "http://schemas.android.com/apk/res-auto"
+        xmlns:tools = "http://schemas.android.com/tools"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
-        android:layout_marginStart = "32dp"
-        android:layout_marginEnd = "32dp"
-        android:hint = "Name"
-        android:paddingBottom = "10dp"
-        app:endIconMode = "clear_text"
-        app:errorEnabled = "true"
+        android:orientation = "vertical"
         >
         
-        <com.google.android.material.textfield.TextInputEditText
-            android:id = "@+id/fieldName"
-            android:layout_width = "match_parent"
+        <TextView
+            android:id = "@+id/tvSignUp"
+            android:layout_width = "wrap_content"
             android:layout_height = "wrap_content"
-            android:inputType = "text"
+            android:layout_gravity = "center"
+            android:layout_marginTop = "40dp"
+            android:layout_marginBottom = "32dp"
+            android:text = "Sign up"
+            android:textSize = "20sp"
+            android:textStyle = "bold"
             />
-    
-    </com.google.android.material.textfield.TextInputLayout>
-    
-    <com.google.android.material.textfield.TextInputLayout
-        android:id = "@+id/emailbox"
-        style = "@style/Theme.OutLinedBox"
-        android:layout_width = "match_parent"
-        android:layout_height = "wrap_content"
-        android:layout_marginStart = "32dp"
-        android:layout_marginEnd = "32dp"
-        android:hint = "Email"
-        android:paddingBottom = "10dp"
-        app:endIconMode = "clear_text"
-        app:errorEnabled = "true"
-        app:helperText = "This Field is optional"
-        >
         
-        <com.google.android.material.textfield.TextInputEditText
-            android:id = "@+id/fieldEmail"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/namebox"
+            style = "@style/Theme.OutLinedBox"
             android:layout_width = "match_parent"
             android:layout_height = "wrap_content"
-            android:inputType = "textEmailAddress"
-            />
-    
-    </com.google.android.material.textfield.TextInputLayout>
-    
-    <com.google.android.material.textfield.TextInputLayout
-        android:id = "@+id/confirmemailbox"
-        style = "@style/Theme.OutLinedBox"
-        android:layout_width = "match_parent"
-        android:layout_height = "wrap_content"
-        android:layout_marginStart = "32dp"
-        android:layout_marginEnd = "32dp"
-        android:hint = "Confirm Email"
-        android:paddingBottom = "10dp"
-        app:endIconMode = "clear_text"
-        app:errorEnabled = "true"
-        app:helperText = "This Field is optional"
-        >
+            android:layout_marginStart = "32dp"
+            android:layout_marginEnd = "32dp"
+            android:hint = "Name"
+            android:paddingBottom = "10dp"
+            app:endIconMode = "clear_text"
+            app:errorEnabled = "true"
+            >
+            
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/fieldName"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
         
-        <com.google.android.material.textfield.TextInputEditText
-            android:id = "@+id/fieldEmailconfirm"
+        </com.google.android.material.textfield.TextInputLayout>
+        
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/emailbox"
+            style = "@style/Theme.OutLinedBox"
             android:layout_width = "match_parent"
             android:layout_height = "wrap_content"
-            android:inputType = "textEmailAddress"
+            android:layout_marginStart = "32dp"
+            android:layout_marginEnd = "32dp"
+            android:hint = "Email"
+            android:paddingBottom = "10dp"
+            app:endIconMode = "clear_text"
+            app:errorEnabled = "true"
+            app:helperText = "This Field is optional"
+            >
+            
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/fieldEmail"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "textEmailAddress"
+                />
+        
+        </com.google.android.material.textfield.TextInputLayout>
+        
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/confirmemailbox"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:layout_marginStart = "32dp"
+            android:layout_marginEnd = "32dp"
+            android:hint = "Confirm Email"
+            android:paddingBottom = "10dp"
+            app:endIconMode = "clear_text"
+            app:errorEnabled = "true"
+            app:helperText = "This Field is optional"
+            >
+            
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/fieldEmailconfirm"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "textEmailAddress"
+                />
+        
+        </com.google.android.material.textfield.TextInputLayout>
+        
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:layout_marginStart = "32dp"
+            android:layout_marginTop = "8dp"
+            android:layout_marginEnd = "32dp"
+            >
+            
+            <com.google.android.material.button.MaterialButton
+                android:id = "@+id/button_register_email"
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "Register this email"
+                android:visibility = "invisible"
+                app:layout_constraintStart_toStartOf = "parent"
+                app:layout_constraintTop_toTopOf = "parent"
+                />
+            
+            <com.google.android.material.button.MaterialButton
+                android:id = "@+id/button_verify"
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "Verify"
+                app:layout_constraintEnd_toEndOf = "parent"
+                app:layout_constraintTop_toTopOf = "parent"
+                />
+        
+        
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        
+        <TextView
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:layout_marginStart = "32dp"
+            android:padding = "10dp"
+            android:text = "Are you a doctor?"
+            android:textSize = "16sp"
             />
-    
-    </com.google.android.material.textfield.TextInputLayout>
-    
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width = "match_parent"
-        android:layout_height = "wrap_content"
-        android:layout_marginStart = "32dp"
-        android:layout_marginTop = "8dp"
-        android:layout_marginEnd = "32dp"
-        >
+        
+        <RadioGroup
+            android:id = "@+id/radiogrp"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:layout_marginStart = "32dp"
+            android:orientation = "horizontal"
+            >
+            
+            <RadioButton
+                android:id = "@+id/radioyes"
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "Yes"
+                />
+            
+            <RadioButton
+                android:id = "@+id/radiono"
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "No"
+                />
+        
+        </RadioGroup>
+        
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/licensebox"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:layout_marginStart = "32dp"
+            android:layout_marginEnd = "32dp"
+            android:hint = "License"
+            android:visibility = "gone"
+            app:errorEnabled = "true"
+            >
+            
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/license"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                />
+        
+        </com.google.android.material.textfield.TextInputLayout>
+        
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/doctypebox"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:layout_marginStart = "32dp"
+            android:layout_marginEnd = "32dp"
+            android:hint = "Enter your speciality"
+            android:visibility = "gone"
+            app:errorEnabled = "true"
+            >
+            
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/doctypetext"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "text"
+                />
+        
+        </com.google.android.material.textfield.TextInputLayout>
+        
+        <com.google.android.material.textfield.TextInputLayout
+            android:id = "@+id/docexpbox"
+            style = "@style/Theme.OutLinedBox"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:layout_marginStart = "32dp"
+            android:layout_marginEnd = "32dp"
+            android:hint = "Experience (in years)"
+            android:visibility = "gone"
+            app:errorEnabled = "true"
+            >
+            
+            <com.google.android.material.textfield.TextInputEditText
+                android:id = "@+id/docexptext"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:inputType = "number"
+                />
+        
+        </com.google.android.material.textfield.TextInputLayout>
+        
         
         <com.google.android.material.button.MaterialButton
-            android:id = "@+id/button_register_email"
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:text = "Register this email"
-            android:visibility = "invisible"
-            app:layout_constraintStart_toStartOf = "parent"
-            app:layout_constraintTop_toTopOf = "parent"
-            />
-        
-        <com.google.android.material.button.MaterialButton
-            android:id = "@+id/button_verify"
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:text = "Verify"
-            app:layout_constraintEnd_toEndOf = "parent"
-            app:layout_constraintTop_toTopOf = "parent"
-            />
-    
-    
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    
-    <TextView
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:layout_marginStart = "32dp"
-        android:padding = "10dp"
-        android:text = "Are you a doctor?"
-        android:textSize = "16sp"
-        />
-    
-    <RadioGroup
-        android:id = "@+id/radiogrp"
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:layout_marginStart = "32dp"
-        android:orientation = "horizontal"
-        >
-        
-        <RadioButton
-            android:id = "@+id/radioyes"
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:text = "Yes"
-            />
-        
-        <RadioButton
-            android:id = "@+id/radiono"
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:text = "No"
-            />
-    
-    </RadioGroup>
-    
-    <com.google.android.material.textfield.TextInputLayout
-        android:id = "@+id/licensebox"
-        style = "@style/Theme.OutLinedBox"
-        android:layout_width = "match_parent"
-        android:layout_height = "wrap_content"
-        android:layout_marginStart = "32dp"
-        android:layout_marginEnd = "32dp"
-        android:hint = "License"
-        android:visibility = "gone"
-        app:errorEnabled = "true"
-        >
-        
-        <com.google.android.material.textfield.TextInputEditText
-            android:id = "@+id/license"
+            android:id = "@+id/button_signin"
             android:layout_width = "match_parent"
             android:layout_height = "wrap_content"
+            android:layout_marginStart = "32dp"
+            android:layout_marginTop = "8dp"
+            android:layout_marginEnd = "32dp"
+            android:text = "Sign Up"
+            android:textAllCaps = "false"
             />
     
-    </com.google.android.material.textfield.TextInputLayout>
-    
-    <com.google.android.material.textfield.TextInputLayout
-        android:id = "@+id/doctypebox"
-        style = "@style/Theme.OutLinedBox"
-        android:layout_width = "match_parent"
-        android:layout_height = "wrap_content"
-        android:layout_marginStart = "32dp"
-        android:layout_marginEnd = "32dp"
-        android:hint = "Enter your speciality"
-        android:visibility = "gone"
-        app:errorEnabled = "true"
-        >
-        
-        <com.google.android.material.textfield.TextInputEditText
-            android:id = "@+id/doctypetext"
-            android:layout_width = "match_parent"
-            android:layout_height = "wrap_content"
-            android:inputType = "text"
-            />
-    
-    </com.google.android.material.textfield.TextInputLayout>
-    
-    <com.google.android.material.textfield.TextInputLayout
-        android:id = "@+id/docexpbox"
-        style = "@style/Theme.OutLinedBox"
-        android:layout_width = "match_parent"
-        android:layout_height = "wrap_content"
-        android:layout_marginStart = "32dp"
-        android:layout_marginEnd = "32dp"
-        android:hint = "Experience (in years)"
-        android:visibility = "gone"
-        app:errorEnabled = "true"
-        >
-        
-        <com.google.android.material.textfield.TextInputEditText
-            android:id = "@+id/docexptext"
-            android:layout_width = "match_parent"
-            android:layout_height = "wrap_content"
-            android:inputType = "number"
-            />
-    
-    </com.google.android.material.textfield.TextInputLayout>
-    
-    
-    <com.google.android.material.button.MaterialButton
-        android:id = "@+id/button_signin"
-        android:layout_width = "match_parent"
-        android:layout_height = "wrap_content"
-        android:layout_marginStart = "32dp"
-        android:layout_marginTop = "8dp"
-        android:layout_marginEnd = "32dp"
-        android:text = "Sign Up"
-        android:textAllCaps = "false"
-        />
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
+
