@@ -25,15 +25,142 @@
                 android:layout_height = "?attr/actionBarSize"
                 app:title = "@string/app_name"
                 />
+            
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id = "@+id/progressbardoc"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:indeterminate = "true"
+                />
         
         </com.google.android.material.appbar.AppBarLayout>
         
-        <FrameLayout
-            android:id = "@+id/docfragment"
+        <LinearLayout
             android:layout_width = "match_parent"
-            android:layout_height = "match_parent"
-            app:layout_behavior = "com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            />
+            android:layout_height = "wrap_content"
+            android:layout_marginStart = "20dp"
+            android:layout_marginTop = "?attr/actionBarSize"
+            android:layout_marginEnd = "20dp"
+            android:orientation = "vertical"
+            >
+            
+            <TextView
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "20dp"
+                android:text = "Hello,"
+                android:textSize = "40sp"
+                />
+            
+            <TextView
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text = "Doctor Who"
+                android:textSize = "32sp"
+                />
+            
+            <TextView
+                android:id = "@+id/someText"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_marginTop = "20dp"
+                android:ellipsize = "marquee"
+                android:fadingEdge = "horizontal"
+                android:marqueeRepeatLimit = "marquee_forever"
+                android:scrollHorizontally = "true"
+                android:singleLine = "true"
+                android:text = "You don't have any upcoming appointments"
+                android:textSize = "22sp"
+                />
+            
+            <LinearLayout
+                android:id = "@+id/docrecent"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:orientation = "vertical"
+                android:visibility = "gone"
+                >
+                
+                <TextView
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:text = "You have an appointment with:-"
+                    />
+                
+                <LinearLayout
+                    android:layout_width = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:orientation = "horizontal"
+                    >
+                    
+                    <TextView
+                        android:id = "@+id/recentPatient"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:text = "Patient name"
+                        />
+                    
+                    <TextView
+                        android:id = "@+id/recentTime"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:layout_marginStart = "50dp"
+                        android:text = "HH:MM"
+                        />
+                
+                </LinearLayout>
+            
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:orientation = "horizontal"
+                >
+                
+                <ImageButton
+                    android:layout_width = "160dp"
+                    android:layout_height = "160dp"
+                    android:layout_marginTop = "20dp"
+                    />
+                
+                <ImageButton
+                    android:layout_width = "160dp"
+                    android:layout_height = "160dp"
+                    android:layout_marginStart = "40dp"
+                    android:layout_marginTop = "20dp"
+                    />
+            
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:orientation = "horizontal"
+                >
+                
+                <ImageButton
+                    android:layout_width = "160dp"
+                    android:layout_height = "160dp"
+                    android:layout_marginTop = "20dp"
+                    />
+                
+                <ImageButton
+                    android:layout_width = "160dp"
+                    android:layout_height = "160dp"
+                    android:layout_marginStart = "40dp"
+                    android:layout_marginTop = "20dp"
+                    />
+            
+            </LinearLayout>
+            
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                />
+        
+        
+        </LinearLayout>
     
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     
@@ -49,5 +176,6 @@
         app:headerLayout = "@layout/header_drawer"
         app:menu = "@menu/drawer_items"
         />
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
