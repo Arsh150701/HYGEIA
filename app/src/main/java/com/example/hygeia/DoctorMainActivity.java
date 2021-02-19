@@ -32,31 +32,18 @@ public class DoctorMainActivity extends AppCompatActivity implements NavigationV
     private Toolbar toolbar;
     private DrawerLayout drawer;
     private NavigationView navigationView;
-    private TextView someText, patientName, time;
-    private LinearProgressIndicator progressIndicator;
-    private LinearLayout recent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_main);
-
         toolbar = findViewById(R.id.doctoolbar);
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.docdrawerlayout);
         navigationView = findViewById(R.id.docnavigation);
 
-        progressIndicator = findViewById(R.id.progressbardoc);
-        someText = findViewById(R.id.someText);
-        recent = findViewById(R.id.docrecent);
-        patientName = findViewById(R.id.recentPatient);
-        time = findViewById(R.id.recentTime);
-
-        someText.setSelected(true);
-
         getDrawerStarted();
-        getRecent();
     }
 
     private void getDrawerStarted() {
@@ -67,6 +54,9 @@ public class DoctorMainActivity extends AppCompatActivity implements NavigationV
                 R.string.open_drawer,
                 R.string.close_drawer
         );
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment2,
+                new DocHome()).addToBackStack("Doc Home").commit();
 
         drawer.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
@@ -82,37 +72,5 @@ public class DoctorMainActivity extends AppCompatActivity implements NavigationV
     public void onPointerCaptureChanged(boolean hasCapture) {
     }
 
-    private void getRecent() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        db.collection("doctors")
-                .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            String name = (document.getString("Name"));
-
-                            db.collection("Appointment")
-                                    .whereEqualTo("Doctor Name", name)
-                                    .get()
-                                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                        @Override
-                                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                            Log.d(TAG, "onSuccessListner inside appt");
-                                            List<DocumentSnapshot> snapshotsList = queryDocumentSnapshots.getDocuments();
-                                            time.setText(snapshotsList.get(0).get("Time").toString());
-                                            patientName.setText(snapshotsList.get(0).get("Patient Name").toString());
-                                            someText.setVisibility(View.GONE);
-                                            recent.setVisibility(View.VISIBLE);
-                                            progressIndicator.setVisibility(View.GONE);
-                                        }
-                                    });
-
-                        }
-                    }
-                });
-    }
 }
